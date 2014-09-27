@@ -35,8 +35,6 @@ from time import sleep
 import win32api
 import win32con 
 import win32com.client
-import win32ui
-import win32gui
 import sys
 import random 
 import threading
