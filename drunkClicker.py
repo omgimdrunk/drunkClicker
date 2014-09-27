@@ -80,9 +80,9 @@ def timesUP (mintoadd ) :
 	tNow = datetime.datetime.now()
 	fTime = tNow + datetime.timedelta(minutes=mintoadd)
 	x = str(fTime.time())
-	x =  x.split('.')[0]							#	This	
-	newTime.extend(x.split(':'))					#	Shit		
-	if int(newTime[0]) >12 :						#	IS
+	x =  x.split('.')[0]					#	This	
+	newTime.extend(x.split(':'))				#	Shit		
+	if int(newTime[0]) >12 :				#	IS
 		newTime[0] = str(int(newTime[0]) -12)		#	BANANAS
 	return newTime[0]+':'+newTime[1]+':'+newTime[2]
 
