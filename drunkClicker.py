@@ -161,7 +161,7 @@ def buffStart () :
 	global mvPOS
 	
 	fbCD = 150 #2.5 min for lowest CD
-	drCD = 900 #15 min for DR Ceramony
+	drCD = 900 #15 min for DR Ceremony
 	while mvPOS != 0 :
 		fngrBlast ()
 		darkRit ()
