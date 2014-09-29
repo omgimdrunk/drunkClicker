@@ -106,7 +106,6 @@ def holdUp ( waitTime ) :
 		if mvPOS == 0 :
 			return 0
 		waitTime = waitTime -0.5
-		print ( waitTime )
 		sleep(0.05)
 	
 	
