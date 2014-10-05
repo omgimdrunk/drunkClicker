@@ -59,6 +59,7 @@ Or do edit, I don't really care . . .
 #Global Variables
 mvPOS = 0
 theShell = 0
+lvlProgress = 4
 
 
 
@@ -108,12 +109,16 @@ def holdUp ( waitTime ) :
 		waitTime = waitTime -0.5
 		sleep(0.5)
 	
+def lvlProg ( ) :
+	global theShell
+	theShell.SendKeys( 'a', 0)
 	
-	
-def fngrBlast ():
+def fngrBlast ( ):
 	global theShell
 	global pressSleep
 	
+	
+	sleep(pressSleep)
 	theShell.SendKeys( '1', 0)
 	sleep(pressSleep)
 	theShell.SendKeys( '2', 0)
@@ -136,6 +141,7 @@ def darkRit () :
 	sleep(pressSleep)
 	theShell.SendKeys( '9', 0)
 
+		
 
 def darkRitload () :
 	global theShell
@@ -158,9 +164,15 @@ def buffStart () :
 	'''
 	global mvPOS
 	
+	curProg = lvlProgress
 	fbCD = 150 #2.5 min for lowest CD
 	drCD = 900 #15 min for DR Ceremony
 	while mvPOS != 0 :
+		if curProg == 0:
+			lvlProg()
+			curProg = lvlProgress
+		else :
+			curProg = curProg -1
 		fngrBlast ()
 		darkRit ()
 		print ('DR START : Dark Ritual Ceremony has started, will complete at ' + timesUP(15) )
@@ -174,11 +186,12 @@ def buffStart () :
 			if holdUp (fbCD ) == 0 :
 				return
 				
-def main ( cords, buffs )	:
+def main ( cords, buffs  )	:
 	global mvPOS
 	global clkSleep
 	global clkCount
 	global theShell
+	
 	
 	xy = cords.split (',')
 	POS1 = int(xy[0])
@@ -217,7 +230,8 @@ def main ( cords, buffs )	:
 	
 #BEGIN	
 doBuffs = 0
-opts, args = getopt.getopt(sys.argv[1:], 'c:t:b') #create an array for variables
+
+opts, args = getopt.getopt(sys.argv[1:], 'p:c:t:b') #create an array for variables
 for o,a in opts :	#o is the flag argument, a is for the following variable
 	if o ==  '-t' :  
    	#This will simply move the mouse to the x,y
@@ -227,4 +241,5 @@ for o,a in opts :	#o is the flag argument, a is for the following variable
 		doBuffs = 1
 	if o == '-c' :
 		main(a, doBuffs)
+		
 		
